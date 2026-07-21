@@ -5,16 +5,16 @@ testers. StoryTable's application source remains private.
 
 ## Current beta
 
-Current version: **0.1.49 beta**
+Current version: **0.1.50 beta**
 
 Choose the download that matches your computer:
 
-- **Windows:** [Download StoryTable 0.1.49 for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.49-beta/StoryTable-0.1.49-Windows-Setup.exe)
-- **Mac with an Apple M-series chip:** [Download StoryTable 0.1.49 for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.49-beta/StoryTable-0.1.49-macOS-Apple-Silicon.dmg)
-- **Mac with an Intel processor:** [Download StoryTable 0.1.49 for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.49-beta/StoryTable-0.1.49-macOS-Intel.dmg)
+- **Windows:** [Download StoryTable 0.1.50 for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.50-beta/StoryTable-0.1.50-Windows-Setup.exe)
+- **Mac with an Apple M-series chip:** [Download StoryTable 0.1.50 for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.50-beta/StoryTable-0.1.50-macOS-Apple-Silicon.dmg)
+- **Mac with an Intel processor:** [Download StoryTable 0.1.50 for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.50-beta/StoryTable-0.1.50-macOS-Intel.dmg)
 
 Release notes and checksums are available on the
-[StoryTable Beta 0.1.49 release page](https://github.com/framedbyrandy/storytable-testers/releases/tag/v0.1.49-beta).
+[StoryTable Beta 0.1.50 release page](https://github.com/framedbyrandy/storytable-testers/releases/tag/v0.1.50-beta).
 
 These builds connect to StoryTable's staging service. Do not use them for
 production customer work.
