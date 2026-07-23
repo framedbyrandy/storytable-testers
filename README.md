@@ -3,21 +3,22 @@
 This repository provides unsigned StoryTable beta installers for invited
 testers. StoryTable's application source remains private.
 
-## Current beta
+## Current public tester builds
 
-Current version: **0.1.51 beta**
+The platform versions are listed separately because the Windows and macOS
+release pipelines are currently at different checkpoints.
 
 Choose the download that matches your computer:
 
-- **Windows:** [Download StoryTable 0.1.51 for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-Windows-Setup.exe)
-- **Mac with an Apple M-series chip:** [Download StoryTable 0.1.51 for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-macOS-Apple-Silicon.dmg)
-- **Mac with an Intel processor:** [Download StoryTable 0.1.51 for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-macOS-Intel.dmg)
-
-Release notes and checksums are available on the
-[StoryTable Beta 0.1.51 release page](https://github.com/framedbyrandy/storytable-testers/releases/tag/v0.1.51-beta).
+- **Windows â€” 0.1.61:** [Download StoryTable for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.61-beta/StoryTable-0.1.61-Windows-Setup.exe)
+- **Mac with an Apple M-series chip â€” 0.1.51:** [Download StoryTable for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-macOS-Apple-Silicon.dmg)
+- **Mac with an Intel processor â€” 0.1.51:** [Download StoryTable for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-macOS-Intel.dmg)
 
 These builds connect to StoryTable's staging service. Do not use them for
 production customer work.
+
+Release history and checksums are available on the
+[Releases page](https://github.com/framedbyrandy/storytable-testers/releases).
 
 ## Unsigned-build warnings
 
