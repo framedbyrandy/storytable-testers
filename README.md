@@ -1,7 +1,7 @@
 # StoryTable Beta Testing
 
-This repository provides unsigned StoryTable beta installers for invited
-testers. StoryTable's application source remains private.
+This repository provides StoryTable beta installers for invited testers.
+StoryTable's application source remains private.
 
 ## Current public tester builds
 
@@ -11,9 +11,9 @@ release pipelines are currently at different checkpoints.
 Choose the download that matches your computer:
 
 <!-- BEGIN CURRENT DOWNLOADS -->
-- **Windows - 0.1.72:** [Download StoryTable for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.72-beta/StoryTable-0.1.72-Windows-Setup.exe)
-- **Mac with an Apple M-series chip - 0.1.51:** [Download StoryTable for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-macOS-Apple-Silicon.dmg)
-- **Mac with an Intel processor - 0.1.51:** [Download StoryTable for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.51-beta/StoryTable-0.1.51-macOS-Intel.dmg)
+- **Windows - 0.1.98:** [Download StoryTable for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.98-beta/StoryTable-0.1.98-Windows-Setup.exe)
+- **Mac with an Apple M-series chip - 0.1.98:** [Download StoryTable for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.98-beta/StoryTable-0.1.98-macOS-Apple-Silicon.dmg)
+- **Mac with an Intel processor - 0.1.98:** [Download StoryTable for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.98-beta/StoryTable-0.1.98-macOS-Intel.dmg)
 <!-- END CURRENT DOWNLOADS -->
 
 These builds connect to StoryTable's staging service. Do not use them for
@@ -22,13 +22,13 @@ production customer work.
 Release history and checksums are available on the
 [Releases page](https://github.com/framedbyrandy/storytable-testers/releases).
 
-## Unsigned-build warnings
+## Platform security notes
 
 - **Windows:** Windows may display "Windows protected your PC." Select
   **More info**, verify that the file came from this repository, and choose
   **Run anyway**. Some managed computers may block unsigned applications.
-- **macOS:** Control-click StoryTable and choose **Open**. If macOS still
-  blocks it, use **System Settings > Privacy & Security > Open Anyway**.
+- **macOS:** The 0.1.98 Mac packages are signed with Developer ID, notarized
+  by Apple, and stapled. Open the DMG and drag StoryTable to Applications.
 
 ## Reporting feedback
 
