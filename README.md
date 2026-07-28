@@ -27,7 +27,7 @@ Release history and checksums are available on the
 - **Windows:** Windows may display "Windows protected your PC." Select
   **More info**, verify that the file came from this repository, and choose
   **Run anyway**. Some managed computers may block unsigned applications.
-- **macOS:** The 0.1.98 Mac packages are signed with Developer ID, notarized
+- **macOS:** The current Mac packages are signed with Developer ID, notarized
   by Apple, and stapled. Open the DMG and drag StoryTable to Applications.
 
 ## Reporting feedback
