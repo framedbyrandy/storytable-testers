@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Release events otherwise check out the release tag, leaving HEAD
+          # detached and making the final `git push` fail.
+          ref: main
 
       - name: Generate links from published release assets
         env:
