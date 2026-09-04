@@ -22,6 +22,10 @@ production customer work.
 Release history and checksums are available on the
 [Releases page](https://github.com/framedbyrandy/storytable-testers/releases).
 
+The User Manual is updated from the matching release asset automatically. A
+desktop release without a manual of the same version fails this repository's
+publication check instead of silently leaving older instructions online.
+
 ## Platform security notes
 
 - **Windows:** Windows may display "Windows protected your PC." Select

@@ -34,7 +34,13 @@ ASSET_PATTERNS = {
         "Download StoryTable for Intel Mac",
         re.compile(r"^StoryTable-(\d+\.\d+\.\d+)-macOS-Intel\.dmg$"),
     ),
+    "manual": (
+        "User Manual",
+        "Open the current StoryTable User Manual",
+        re.compile(r"^StoryTable-(\d+\.\d+\.\d+)-User-Manual\.pdf$"),
+    ),
 }
+PLATFORM_KEYS = ("windows", "macos_apple_silicon", "macos_intel")
 
 
 def _version_key(version: str) -> tuple[int, int, int]:
@@ -75,12 +81,22 @@ def select_downloads(releases: list[dict]) -> dict[str, dict]:
         raise ValueError(
             "No downloadable release asset found for: " + ", ".join(missing)
         )
+    newest_platform_version = max(
+        (selected[key]["version"] for key in PLATFORM_KEYS),
+        key=_version_key,
+    )
+    if selected["manual"]["version"] != newest_platform_version:
+        raise ValueError(
+            "The current user manual must match the newest desktop release: "
+            f"manual {selected['manual']['version']}, desktop "
+            f"{newest_platform_version}"
+        )
     return selected
 
 
 def render_downloads(selected: dict[str, dict]) -> str:
     lines = [BEGIN_MARKER]
-    for platform in ASSET_PATTERNS:
+    for platform in PLATFORM_KEYS:
         label, link_text, _ = ASSET_PATTERNS[platform]
         item = selected[platform]
         linked_name = unquote(Path(urlparse(item["url"]).path).name)
@@ -93,6 +109,11 @@ def render_downloads(selected: dict[str, dict]) -> str:
             f"- **{label} - {item['version']}:** "
             f"[{link_text}]({item['url']})"
         )
+    manual = selected["manual"]
+    lines.append(
+        f"- **User Manual - {manual['version']}:** "
+        "[Open the current StoryTable User Manual](manual/StoryTable-User-Manual.pdf)"
+    )
     lines.append(END_MARKER)
     return "\n".join(lines)
 
@@ -150,6 +171,48 @@ def verify_downloads(selected: dict[str, dict], token: str) -> None:
                 )
 
 
+def fetch_asset(url: str) -> bytes:
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": "storytable-download-page-updater"},
+    )
+    with urllib.request.urlopen(request, timeout=60) as response:
+        if response.status != 200:
+            raise ValueError(f"Manual download did not resolve successfully: {url}")
+        payload = response.read()
+    if not payload.startswith(b"%PDF-"):
+        raise ValueError("The selected user-manual release asset is not a PDF.")
+    return payload
+
+
+def update_manual(
+    selected: dict[str, dict],
+    *,
+    output: Path,
+    version_output: Path,
+    check: bool,
+) -> bool:
+    manual = selected["manual"]
+    payload = fetch_asset(manual["url"])
+    version_text = f"{manual['version']}\n"
+    current_payload = output.read_bytes() if output.is_file() else b""
+    current_version = (
+        version_output.read_text(encoding="utf-8")
+        if version_output.is_file()
+        else ""
+    )
+    current = current_payload == payload and current_version == version_text
+    if check:
+        return current
+    if current:
+        return True
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(payload)
+    version_output.parent.mkdir(parents=True, exist_ok=True)
+    version_output.write_text(version_text, encoding="utf-8")
+    return True
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -157,6 +220,16 @@ def main() -> int:
         default=os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPOSITORY),
     )
     parser.add_argument("--readme", type=Path, default=Path("README.md"))
+    parser.add_argument(
+        "--manual-output",
+        type=Path,
+        default=Path("manual/StoryTable-User-Manual.pdf"),
+    )
+    parser.add_argument(
+        "--manual-version-output",
+        type=Path,
+        default=Path("manual/current-version.txt"),
+    )
     parser.add_argument("--releases-json", type=Path)
     parser.add_argument("--skip-url-check", action="store_true")
     parser.add_argument("--check", action="store_true")
@@ -173,9 +246,18 @@ def main() -> int:
 
     source = args.readme.read_text(encoding="utf-8")
     updated = update_readme(source, render_downloads(selected))
+    manual_current = update_manual(
+        selected,
+        output=args.manual_output,
+        version_output=args.manual_version_output,
+        check=args.check,
+    )
     if args.check:
         if source != updated:
             print("README download block is stale", file=sys.stderr)
+            return 1
+        if not manual_current:
+            print("Published user manual is stale", file=sys.stderr)
             return 1
         return 0
     if source != updated:
