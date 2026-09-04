@@ -11,9 +11,10 @@ release pipelines are currently at different checkpoints.
 Choose the download that matches your computer:
 
 <!-- BEGIN CURRENT DOWNLOADS -->
-- **Windows - 0.1.211:** [Download StoryTable for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.211-beta/StoryTable-0.1.211-Windows-Setup.exe)
+- **Windows - 0.1.264:** [Download StoryTable for Windows](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.264-beta/StoryTable-0.1.264-Windows-Setup.exe)
 - **Mac with an Apple M-series chip - 0.1.262:** [Download StoryTable for Apple Silicon](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.262-beta/StoryTable-0.1.262-macOS-Apple-Silicon.dmg)
 - **Mac with an Intel processor - 0.1.99:** [Download StoryTable for Intel Mac](https://github.com/framedbyrandy/storytable-testers/releases/download/v0.1.99-beta/StoryTable-0.1.99-macOS-Intel.dmg)
+- **User Manual - 0.1.264:** [Open the current StoryTable User Manual](manual/StoryTable-User-Manual.pdf)
 <!-- END CURRENT DOWNLOADS -->
 
 These builds connect to StoryTable's staging service. Do not use them for
